@@ -1,0 +1,28 @@
+package scopes;
+
+public class SquareNums {
+    public static void main(String[] args) {
+        System.out.println(squared(3,25));
+    }
+
+    // method signature int to handle ints
+    public static int squared(int a, int b) {
+        // count var to track number of times the result matches a squared integer
+        int count = 0;
+        // if I set "i = a", Math.pow(i, 2) will exclude the squared ints that come before "int a"
+        // for example if 'int a = 3' & 'int b = 16' Math.pow(i, 2) returns 9.0 & 16.0 but not 4.0
+        // so if I set 'i = 1' Math.pow(i, 2) begins iterating from 1 and returns every squared int
+            // then if(sq >= a && sq <= b) only the squared ints that are between 3-16 are returned (4, 9, 16)
+        for(int i = 1; i <= b; i++) {
+            // Square each 'int i' up until 'int b' parameter
+            double sq = Math.pow(i, 2);
+            System.out.println(sq);
+            // if 'double sq' falls within the range of 'a' && 'b' parameters increase the count by 1
+            if(sq >= a && sq <= b) {
+                count++;
+            }
+        }
+        // finally return the count of matching squared integers
+        return count;
+    }
+}
